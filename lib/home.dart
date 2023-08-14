@@ -13,7 +13,7 @@ class Home extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Weather App", style: TextStyle(color: Colors.black),),
+          title: Text("Weather", style: TextStyle(color: Colors.black),),
           elevation: 0.0,
           backgroundColor: Colors.lightBlueAccent,
         ),
