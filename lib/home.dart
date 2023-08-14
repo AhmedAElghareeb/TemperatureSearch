@@ -56,20 +56,25 @@ class Home extends StatelessWidget {
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(BlocProvider.of<WeatherCubit>(
-                              context).model!.name,
+                          Text("Name is: ${BlocProvider.of<WeatherCubit>(context).model!.name}",
                           ),
                           SizedBox(height: 15.0,),
-                          Text(BlocProvider.of<WeatherCubit>(
-                              context).model!.main.temp.toString(),
+                          Text("Temp is: ${BlocProvider.of<WeatherCubit>(context).model!.main.temp.toString()}",
                           ),
                           SizedBox(height: 15.0,),
-                          Text(BlocProvider.of<WeatherCubit>(
-                              context).model!.main.tempMin.toString(),
+                          Text("Min Temp is: ${BlocProvider.of<WeatherCubit>(context).model!.main.tempMin.toString()}",
                           ),
                           SizedBox(height: 15.0,),
-                          Text(BlocProvider.of<WeatherCubit>(
-                              context).model!.main.tempMax.toString(),
+                          Text("Max Temp is: ${BlocProvider.of<WeatherCubit>(context).model!.main.tempMax.toString()}",
+                          ),
+                          SizedBox(height: 15.0,),
+                          Text("Pressure is: ${BlocProvider.of<WeatherCubit>(context).model!.main.pressure.toString()}",
+                          ),
+                          SizedBox(height: 15.0,),
+                          Text("Humidity is: ${BlocProvider.of<WeatherCubit>(context).model!.main.humidity.toString()}",
+                          ),
+                          SizedBox(height: 15.0,),
+                          Text("Feels Like is: ${BlocProvider.of<WeatherCubit>(context).model!.main.feelsLike.toString()}",
                           ),
                         ],
                       ),
