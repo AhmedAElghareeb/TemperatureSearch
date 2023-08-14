@@ -12,10 +12,10 @@ class GetWeatherFailedState extends WeatherState{
   GetWeatherFailedState({required this.msg});
 }
 
-class GetWeatherFromPaginationLoadingState extends WeatherState{}
-
-class GetWeatherFromPaginationFailedState extends WeatherState{
-  final String msg;
-
-  GetWeatherFromPaginationFailedState({required this.msg});
-}
+// class GetWeatherFromPaginationLoadingState extends WeatherState{}
+//
+// class GetWeatherFromPaginationFailedState extends WeatherState{
+//   final String msg;
+//
+//   GetWeatherFromPaginationFailedState({required this.msg});
+// }
