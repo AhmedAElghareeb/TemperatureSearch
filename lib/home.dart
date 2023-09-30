@@ -8,14 +8,16 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WeatherCubit cubit = BlocProvider.of(context)..getData();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Weather", style: TextStyle(color: Colors.black),),
         elevation: 0.0,
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.tealAccent,
       ),
-      body: BlocBuilder<WeatherCubit, WeatherState>(
+      body: BlocBuilder(
+        bloc: cubit,
         builder: (context, state) {
           if (state is GetWeatherLoadingState)
           {
@@ -30,12 +32,15 @@ class Home extends StatelessWidget {
               child: Column(
                 children: [
                   TextFormField(
-                    controller: BlocProvider.of<WeatherCubit>(context).cityController,
+                    controller: cubit.cityController,
+                    onTapOutside: (event) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
                   ),
                   const SizedBox(height: 15.0,),
                   MaterialButton(
                     onPressed: (){
-                      BlocProvider.of<WeatherCubit>(context).getData();
+                      cubit.getData();
                     },
                     color: Colors.lightBlueAccent,
                     minWidth: 150.0,
@@ -45,25 +50,25 @@ class Home extends StatelessWidget {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text("Name is: ${BlocProvider.of<WeatherCubit>(context).model!.name}",
+                      Text("Name is: ${cubit.model!.name}",
                       ),
                       const SizedBox(height: 16.0,),
-                      Text("Temp is: ${BlocProvider.of<WeatherCubit>(context).model!.main.temp.toString()}",
+                      Text("Temp is: ${cubit.model!.main.temp.toString()}",
                       ),
                       const SizedBox(height: 16.0,),
-                      Text("Min Temp is: ${BlocProvider.of<WeatherCubit>(context).model!.main.tempMin.toString()}",
+                      Text("Min Temp is: ${cubit.model!.main.tempMin.toString()}",
                       ),
                       const SizedBox(height: 16.0,),
-                      Text("Max Temp is: ${BlocProvider.of<WeatherCubit>(context).model!.main.tempMax.toString()}",
+                      Text("Max Temp is: ${cubit.model!.main.tempMax.toString()}",
                       ),
                       const SizedBox(height: 16.0,),
-                      Text("Pressure is: ${BlocProvider.of<WeatherCubit>(context).model!.main.pressure.toString()}",
+                      Text("Pressure is: ${cubit.model!.main.pressure.toString()}",
                       ),
                       const SizedBox(height: 16.0,),
-                      Text("Humidity is: ${BlocProvider.of<WeatherCubit>(context).model!.main.humidity.toString()}",
+                      Text("Humidity is: ${cubit.model!.main.humidity.toString()}",
                       ),
                       const SizedBox(height: 16.0,),
-                      Text("Feels Like is: ${BlocProvider.of<WeatherCubit>(context).model!.main.feelsLike.toString()}",
+                      Text("Feels Like is: ${cubit.model!.main.feelsLike.toString()}",
                       ),
                     ],
                   ),
@@ -71,7 +76,7 @@ class Home extends StatelessWidget {
               ),
             );
           } else {
-            return const Text("Un Handled State...");
+            return const Text("Failed");
           }
         },
       ),

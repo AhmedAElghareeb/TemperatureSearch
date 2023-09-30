@@ -1,12 +1,12 @@
 part of 'cubit.dart';
 
-class WeatherState{}
+class WeatherStates{}
 
-class GetWeatherLoadingState extends WeatherState{}
+class GetWeatherLoadingState extends WeatherStates{}
 
-class GetWeatherSuccessState extends WeatherState{}
+class GetWeatherSuccessState extends WeatherStates{}
 
-class GetWeatherFailedState extends WeatherState{
+class GetWeatherFailedState extends WeatherStates{
   final String msg;
 
   GetWeatherFailedState({required this.msg});

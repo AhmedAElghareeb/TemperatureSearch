@@ -5,27 +5,23 @@ import 'package:test_weather/cubit.dart';
 import 'package:test_weather/home.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.tealAccent,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   const MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => WeatherCubit()..getData(),),
-      ],
+    return BlocProvider(
+      create: (context) => WeatherCubit()..getData(),
       child: MaterialApp(
-        theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarBrightness: Brightness.dark,
-              statusBarColor: Colors.lightBlueAccent,
-            ),
-          ),
-        ),
         debugShowCheckedModeBanner: false,
         home: const Home(),
       ),
