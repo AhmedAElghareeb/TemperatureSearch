@@ -7,7 +7,7 @@ import 'package:test_weather/home.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: Colors.tealAccent,
+      statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
     ),
   );
